@@ -1,17 +1,20 @@
-export default function Progresstracker({tasks}) {
-  
-  const completedTasks = tasks.filter((t)=>t.completed).length;
-  const totaltasks = tasks.length;
-  const percenteage = totaltasks == 0 ? 0: (completedTasks/totaltasks) * 100;
+export default function Progresstracker({ tasks }) {
+
+  const completedTasks = tasks.filter((t) => t.completed).length;
+  const totalTasks = tasks.length;
+
+  const percentage = totalTasks === 0 ? 0 : (completedTasks / totalTasks) * 100;
+
   return (
     <div className="progress-tracker">
       <p>
-        {completedTasks} of {totaltasks} tasks completed
+        {completedTasks} of {totalTasks} tasks completed
       </p>
+
       <div className="progress-bar">
-        <div
+        <div 
           className="progress"
-          style={{ width: `${percenteage}%` }}
+          style={{ width: `${percentage}%` }}
         ></div>
       </div>
     </div>
