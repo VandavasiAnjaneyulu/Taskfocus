@@ -9,27 +9,32 @@ export default function TaskList({ tasks, updateTask, deleteTask }) {
   };
 
   return (
-    <ul className="task-list">
-      {tasks.map((task, index) => (
-        <li key={index} className={task.completed ? "completed" : ""}>
-          <div>
-            <span>
-              {task.text} 
-              <small> ({task.priority}, {task.category}) </small>
-            </span>
-          </div>
+    <div>
+      <h1>TaskList Component</h1>
 
-          <div>
-            <button onClick={() => toggleComplete(index)}>
-              {task.completed ? "Undo" : "Complete"}
-            </button>
+      <ul className="task-list">
+        {tasks.map((task, index) => (
+          <li key={index} className={task.completed ? "completed" : ""}>
+            <div>
+              <span>
+                {task.text}
+                <small> ({task.priority}, {task.category}) </small>
+              </span>
+            </div>
 
-            <button onClick={() => deleteTask(index)}>
-              Delete
-            </button>
-          </div>
-        </li>
-      ))}
-    </ul>
+            <div>
+              <button onClick={() => toggleComplete(index)}>
+                {task.completed ? "Undo" : "Complete"}
+              </button>
+
+              <button onClick={() => deleteTask(index)}>
+                Delete
+              </button>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+    </div>
   );
 }

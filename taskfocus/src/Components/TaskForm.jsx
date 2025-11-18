@@ -5,7 +5,7 @@ export default function Taskform({ addTask }) {
   const [priority, setPriority] = useState("medium");
   const [category, setCategory] = useState("general");
 
-  const handlesubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     addTask({
@@ -15,14 +15,15 @@ export default function Taskform({ addTask }) {
       completed: false,
     });
 
+    // Reset fields
     setTask("");
     setPriority("medium");
     setCategory("general");
   };
 
   return (
-    <form onSubmit={handlesubmit} className="task-form">
-      <div id="inp">
+    <form onSubmit={handleSubmit}>
+      <div>
         <input
           type="text"
           placeholder="Enter the task"
@@ -31,11 +32,10 @@ export default function Taskform({ addTask }) {
         />
 
         <button type="submit">Add Task</button>
-
-        {/* <h1>{task} {priority} {category}</h1> */}
       </div>
 
-      <div id="btns">
+      <div>
+        {/* Priority Dropdown */}
         <select
           value={priority}
           onChange={(e) => setPriority(e.target.value)}
@@ -45,16 +45,20 @@ export default function Taskform({ addTask }) {
           <option value="low">Low</option>
         </select>
 
+        {/* Category Dropdown */}
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
           <option value="general">General</option>
           <option value="work">Work</option>
-          <option value="study">Study</option>
           <option value="personal">Personal</option>
         </select>
       </div>
+
+      <h1>
+        {task} {priority} {category}
+      </h1>
     </form>
   );
 }
